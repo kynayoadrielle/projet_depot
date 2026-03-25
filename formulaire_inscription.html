@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<!-- Déclaration du type de document HTML5 -->
+<html lang="fr">
+<!-- Balise racine avec l'attribut lang pour spécifier la langue française -->
+
+<head>
+    <!-- Section d'en-tête contenant les métadonnées et le style -->
+    <meta charset="UTF-8">
+    <!-- Définit l'encodage des caractères en UTF-8 pour supporter les caractères spéciaux -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configure le viewport pour le responsive design (adaptation mobile) -->
+    
+    <title>Formulaire d'inscription</title>
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    
+    <style>
+        /* Section CSS pour styliser le formulaire */
+        
+        body {
+            /* Style du corps de la page */
+            font-family: Arial, sans-serif;
+            /* Police de caractères sans-serif pour une meilleure lisibilité */
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            /* Dégradé de fond bleu pour correspondre au design ESMT */
+            display: flex;
+            /* Utilise flexbox pour centrer le contenu */
+            justify-content: center;
+            /* Centre horizontalement */
+            align-items: center;
+            /* Centre verticalement */
+            min-height: 100vh;
+            /* Hauteur minimale de 100% de la fenêtre */
+            margin: 0;
+            /* Supprime les marges par défaut */
+            padding: 20px;
+            /* Ajoute un espacement interne */
+        }
+        
+        .container {
+            /* Conteneur principal du formulaire */
+            background-color: white;
+            /* Fond blanc pour le formulaire */
+            border-radius: 10px;
+            /* Coins arrondis */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            /* Ombre portée pour effet de profondeur */
+            padding: 40px;
+            /* Espacement interne généreux */
+            max-width: 400px;
+            /* Largeur maximale du conteneur */
+            width: 100%;
+            /* Largeur de 100% jusqu'à la max-width */
+        }
+        
+        .header {
+            /* Section d'en-tête du formulaire */
+            text-align: center;
+            /* Centre le texte */
+            margin-bottom: 30px;
+            /* Espacement en bas */
+            padding-bottom: 20px;
+            /* Espacement interne en bas */
+            border-bottom: 3px solid #1e3c72;
+            /* Bordure bleue en bas */
+        }
+        
+        .header h2 {
+            /* Titre du formulaire */
+            color: #1e3c72;
+            /* Couleur bleue ESMT */
+            margin: 0;
+            /* Supprime les marges */
+            font-size: 24px;
+            /* Taille de police */
+        }
+        
+        .form-group {
+            /* Groupe contenant un champ de formulaire */
+            margin-bottom: 20px;
+            /* Espacement entre les champs */
+        }
+        
+        label {
+            /* Style des étiquettes de champs */
+            display: block;
+            /* Affichage en bloc pour occuper toute la largeur */
+            margin-bottom: 8px;
+            /* Espacement sous l'étiquette */
+            color: #333;
+            /* Couleur du texte */
+            font-weight: bold;
+            /* Texte en gras */
+            font-size: 14px;
+            /* Taille de police */
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select {
+            /* Style des champs de saisie texte, email et liste déroulante */
+            width: 100%;
+            /* Largeur de 100% */
+            padding: 12px;
+            /* Espacement interne */
+            border: 2px solid #ddd;
+            /* Bordure grise claire */
+            border-radius: 5px;
+            /* Coins arrondis */
+            font-size: 14px;
+            /* Taille de police */
+            box-sizing: border-box;
+            /* Inclut padding et border dans la largeur */
+            transition: border-color 0.3s;
+            /* Animation de transition pour la bordure */
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            /* Style des champs quand ils ont le focus */
+            outline: none;
+            /* Supprime le contour par défaut */
+            border-color: #1e3c72;
+            /* Bordure bleue au focus */
+            box-shadow: 0 0 5px rgba(30, 60, 114, 0.3);
+            /* Ombre bleue légère */
+        }
+        
+        .radio-group {
+            /* Conteneur des boutons radio */
+            display: flex;
+            /* Utilise flexbox */
+            gap: 20px;
+            /* Espacement entre les options */
+            margin-top: 8px;
+            /* Espacement en haut */
+        }
+        
+        .radio-option {
+            /* Option individuelle de radio button */
+            display: flex;
+            /* Flexbox pour aligner radio et label */
+            align-items: center;
+            /* Alignement vertical centré */
+            gap: 8px;
+            /* Espacement entre radio et label */
+        }
+        
+        input[type="radio"] {
+            /* Style des boutons radio */
+            width: 18px;
+            /* Largeur */
+            height: 18px;
+            /* Hauteur */
+            cursor: pointer;
+            /* Curseur pointeur au survol */
+        }
+        
+        .radio-option label {
+            /* Label des options radio */
+            margin: 0;
+            /* Supprime la marge */
+            font-weight: normal;
+            /* Poids normal (pas gras) */
+            cursor: pointer;
+            /* Curseur pointeur */
+        }
+        
+        button {
+            /* Style du bouton de soumission */
+            width: 100%;
+            /* Largeur de 100% */
+            padding: 14px;
+            /* Espacement interne généreux */
+            background-color: #1e3c72;
+            /* Fond bleu ESMT */
+            color: white;
+            /* Texte blanc */
+            border: none;
+            /* Pas de bordure */
+            border-radius: 5px;
+            /* Coins arrondis */
+            font-size: 16px;
+            /* Taille de police */
+            font-weight: bold;
+            /* Texte en gras */
+            cursor: pointer;
+            /* Curseur pointeur */
+            transition: background-color 0.3s;
+            /* Animation de transition */
+            margin-top: 10px;
+            /* Espacement en haut */
+        }
+        
+        button:hover {
+            /* Style du bouton au survol */
+            background-color: #2a5298;
+            /* Couleur plus claire au survol */
+        }
+        
+        button:active {
+            /* Style du bouton lors du clic */
+            transform: translateY(1px);
+            /* Léger déplacement vers le bas */
+        }
+        
+        .required {
+            /* Indicateur de champ obligatoire */
+            color: #d32f2f;
+            /* Couleur rouge */
+            margin-left: 3px;
+            /* Petit espacement à gauche */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Corps de la page HTML -->
+    
+    <div class="container">
+        <!-- Conteneur principal du formulaire -->
+        
+        <div class="header">
+            <!-- En-tête du formulaire -->
+            <h2>Formulaire d'inscription</h2>
+            <!-- Titre du formulaire -->
+        </div>
+        
+        <form id="inscriptionForm" method="post" action="#">
+            <!-- 
+                Formulaire avec :
+                - id pour le cibler en JavaScript
+                - method="post" pour envoyer les données de façon sécurisée
+                - action="#" (à remplacer par l'URL de traitement)
+            -->
+            
+            <div class="form-group">
+                <!-- Groupe pour le champ Prénom -->
+                
+                <label for="prenom">
+                    Prénom <span class="required">*</span>
+                </label>
+                <!-- Label avec indicateur d'obligation (*) -->
+                
+                <input 
+                    type="text" 
+                    id="prenom" 
+                    name="prenom" 
+                    placeholder="votre prénom" 
+                    required 
+                    autofocus
+                >
+                <!-- 
+                    Champ de saisie avec :
+                    - type="text" : champ texte
+                    - id et name : identifiants
+                    - placeholder : aide à la saisie (texte grisé)
+                    - required : champ obligatoire (validation HTML5)
+                    - autofocus : focus automatique au chargement (exigence 4)
+                -->
+            </div>
+            
+            <div class="form-group">
+                <!-- Groupe pour le champ NOM -->
+                
+                <label for="nom">
+                    NOM <span class="required">*</span>
+                </label>
+                <!-- Label en majuscules comme dans le modèle -->
+                
+                <input 
+                    type="text" 
+                    id="nom" 
+                    name="nom" 
+                    placeholder="votre nom" 
+                    required
+                >
+                <!-- Champ texte obligatoire avec placeholder (aide à la saisie) -->
+            </div>
+            
+            <div class="form-group">
+                <!-- Groupe pour le champ Genre -->
+                
+                <label>
+                    Genre <span class="required">*</span>
+                </label>
+                <!-- Label sans attribut "for" car plusieurs options radio -->
+                
+                <div class="radio-group">
+                    <!-- Conteneur des boutons radio -->
+                    
+                    <div class="radio-option">
+                        <!-- Option Féminin -->
+                        <input 
+                            type="radio" 
+                            id="genreF" 
+                            name="genre" 
+                            value="F" 
+                            required
+                        >
+                        <!-- 
+                            Bouton radio avec :
+                            - type="radio" : bouton radio
+                            - name="genre" : même name pour grouper les options
+                            - value="F" : valeur envoyée si sélectionné
+                            - required : au moins une option doit être choisie
+                        -->
+                        <label for="genreF">F</label>
+                        <!-- Label cliquable lié au radio button -->
+                    </div>
+                    
+                    <div class="radio-option">
+                        <!-- Option Masculin -->
+                        <input 
+                            type="radio" 
+                            id="genreM" 
+                            name="genre" 
+                            value="M" 
+                            required
+                        >
+                        <!-- Même structure que l'option F -->
+                        <label for="genreM">M</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <!-- Groupe pour le champ E-mail -->
+                
+                <label for="email">
+                    E-mail <span class="required">*</span>
+                </label>
+                
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="votre email" 
+                    required
+                >
+                <!-- 
+                    Champ email avec :
+                    - type="email" : validation automatique du format email (exigence 3)
+                    - Vérifie la présence de @ et un format valide
+                    - placeholder pour l'aide à la saisie
+                    - required pour l'obligation
+                -->
+            </div>
+            
+            <div class="form-group">
+                <!-- Groupe pour le champ Pays -->
+                
+                <label for="pays">
+                    Pays <span class="required">*</span>
+                </label>
+                
+                <select id="pays" name="pays" required>
+                    <!-- 
+                        Liste déroulante avec :
+                        - id et name pour identification
+                        - required : sélection obligatoire
+                    -->
+                    
+                    <option value="">-- Sélectionnez un pays --</option>
+                    <!-- 
+                        Option vide par défaut pour forcer un choix
+                        (sera considérée comme invalide par required)
+                    -->
+                    
+                    <option value="Benin">le Bénin</option>
+                    <!-- Option pour le Bénin (valeur = Benin, texte affiché = le Bénin) -->
+                    
+                    <option value="Burkina-Faso">le Burkina-Faso</option>
+                    <!-- Option pour le Burkina-Faso (pays de Marc) -->
+                    
+                    <option value="Guinee">la Guinée</option>
+                    <!-- Option pour la Guinée -->
+                    
+                    <option value="Mali">le Mali</option>
+                    <!-- Option pour le Mali -->
+                    
+                    <option value="Mauritanie">la Mauritanie</option>
+                    <!-- Option pour la Mauritanie -->
+                    
+                    <option value="Niger">le Niger</option>
+                    <!-- Option pour le Niger -->
+                    
+                    <option value="Senegal" selected>le Sénégal</option>
+                    <!-- 
+                        Option pour le Sénégal avec :
+                        - selected : sélectionné par défaut (exigence 5)
+                        - C'est le pays où Marc étudie actuellement
+                    -->
+                </select>
+            </div>
+            
+            <button type="submit">S'inscrire</button>
+            <!-- 
+                Bouton de soumission avec :
+                - type="submit" : soumet le formulaire
+                - Texte "S'inscrire" comme dans le modèle
+            -->
+        </form>
+    </div>
+    
+    <script>
+        // Section JavaScript pour validation supplémentaire
+        
+        // Sélection du formulaire par son ID
+        const form = document.getElementById('inscriptionForm');
+        
+        // Ajout d'un écouteur d'événement sur la soumission du formulaire
+        form.addEventListener('submit', function(event) {
+            // Cette fonction s'exécute quand on tente de soumettre le formulaire
+            
+            // Récupération des valeurs des champs
+            const prenom = document.getElementById('prenom').value.trim();
+            // .trim() supprime les espaces en début et fin
+            
+            const nom = document.getElementById('nom').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            // Vérification qu'un genre est sélectionné
+            const genreSelectionne = document.querySelector('input[name="genre"]:checked');
+            
+            // Récupération de la valeur du pays sélectionné
+            const pays = document.getElementById('pays').value;
+            
+            // Tableau pour stocker les erreurs
+            let erreurs = [];
+            
+            // Validation du prénom
+            if (prenom === '') {
+                erreurs.push('Le prénom est obligatoire.');
+            }
+            
+            // Validation du nom
+            if (nom === '') {
+                erreurs.push('Le nom est obligatoire.');
+            }
+            
+            // Validation du genre
+            if (!genreSelectionne) {
+                erreurs.push('Veuillez sélectionner un genre.');
+            }
+            
+            // Validation de l'email avec une regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Cette regex vérifie : texte + @ + texte + . + texte
+            if (!emailRegex.test(email)) {
+                erreurs.push('Veuillez saisir une adresse email valide.');
+            }
+            
+            // Validation du pays
+            if (pays === '') {
+                erreurs.push('Veuillez sélectionner un pays.');
+            }
+            
+            // Si des erreurs existent
+            if (erreurs.length > 0) {
+                // Empêche la soumission du formulaire
+                event.preventDefault();
+                
+                // Affiche les erreurs dans une boîte d'alerte
+                alert('Erreurs de validation :\n\n' + erreurs.join('\n'));
+                // .join('\n') crée une liste d'erreurs avec retours à la ligne
+            } else {
+                // Si tout est valide, on peut soumettre
+                // (En production, vous enverriez les données à un serveur)
+                
+                // Pour cet exemple, on empêche la soumission et affiche les données
+                event.preventDefault();
+                
+                console.log('Données du formulaire :');
+                console.log('Prénom :', prenom);
+                console.log('Nom :', nom);
+                console.log('Genre :', genreSelectionne.value);
+                console.log('Email :', email);
+                console.log('Pays :', pays);
+                
+                alert('Inscription réussie !\n\nVos données ont été enregistrées.');
+                
+                // Réinitialise le formulaire
+                form.reset();
+            }
+        });
+    </script>
+    <!-- Fin du script JavaScript -->
+    
+</body>
+</html>
